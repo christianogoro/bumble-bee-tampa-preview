@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Phone View | Bumble Bee Blinds of Tampa</title>
+<script>
+  // On an actual phone, skip the frame and open the site itself
+  if (window.matchMedia('(max-width: 600px)').matches) location.replace('../');
+</script>
+<style>
+  :root { --honey: #f5b335; --navy: #1f3a4d; --charcoal: #2b2b2b; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; background: var(--navy); color: #fff;
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    display: flex; flex-direction: column; align-items: center; padding: 24px 16px 32px; gap: 16px;
+  }
+  h1 { margin: 0; font-size: 20px; font-weight: 700; }
+  h1 span { color: var(--honey); }
+  .tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .tabs button, .tabs a {
+    min-height: 40px; padding: 0 16px; border-radius: 999px; border: 2px solid rgba(255,255,255,.35);
+    background: transparent; color: #fff; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
+    display: inline-flex; align-items: center; text-decoration: none;
+  }
+  .tabs button[aria-pressed="true"] { background: var(--honey); border-color: var(--honey); color: var(--charcoal); }
+  .phone {
+    width: 417px; height: min(876px, calc(100vh - 150px)); min-height: 560px;
+    padding: 12px; border-radius: 52px; background: #0d0d0d;
+    box-shadow: 0 30px 80px rgba(0,0,0,.5), inset 0 0 0 2px #333;
+  }
+  iframe { display: block; width: 393px; height: 100%; border: 0; border-radius: 42px; background: #fffdf8; }
+  p { margin: 0; font-size: 13px; opacity: .8; text-align: center; }
+</style>
+</head>
+<body>
+  <h1>Bumble Bee Blinds of Tampa: <span>phone view</span></h1>
+  <div class="tabs" role="group" aria-label="Pages">
+    <button type="button" data-path="" aria-pressed="true">Home</button>
+    <button type="button" data-path="gallery/">Gallery</button>
+    <button type="button" data-path="services/">Services</button>
+    <button type="button" data-path="partners/">Partners</button>
+    <button type="button" data-path="faq/">FAQ</button>
+    <button type="button" data-path="contact/">Contact</button>
+    <a href="../">Desktop view &#8599;</a>
+  </div>
+  <div class="phone"><iframe id="screen" src="../" title="Website shown at iPhone size"></iframe></div>
+  <p>iPhone size (393 px wide). Scroll and tap inside the phone.</p>
+<script>
+  const screen = document.getElementById('screen');
+  document.querySelectorAll('[data-path]').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('[data-path]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    screen.src = '../' + b.dataset.path;
+  }));
+</script>
+</body>
+</html>
